@@ -15,18 +15,18 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-    height:400px;
+    height:450px;
     text-align: center;
 }
 
 h1, h2 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 input[type="text"] {
     width: 90%;
     padding: 8px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -38,7 +38,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 button:hover {
@@ -51,9 +51,13 @@ button:hover {
 }
 
 #extraInfo {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-p {
-    margin-bottom: 147px;
+#password {
+    height:170px;
+}
+
+#BTN {
+    position: static;
 }
