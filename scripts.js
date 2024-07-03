@@ -45,7 +45,7 @@ document.getElementById('toggleButton').addEventListener('click', function() {
     const extraInfo = document.getElementById('extraInfo');
     if (extraInfo.style.display === 'none') {
         extraInfo.style.display = 'block';
-        this.textContent = '補充資料區';
+        this.textContent = '返回查詢頁';
         addData();
         
     } else {
