@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>學生資料存儲系統</title>
@@ -9,16 +10,17 @@
 <body>
     <div class="container">
         <h1>學生資料存儲系統</h1>
-        <h2>查詢學生資料</h2>
+        <h2 id="search">查詢學生資料</h2>
         <input type="text" id="searchName" placeholder="輸入學生姓名查詢">
         <button id="searchButton">查詢</button>
         <div id="studentInfo"></div>
-        <button id="toggleButton">補充資料區</button>
         <div id="extraInfo" style="display: none;">
             <h2>補充資料</h2>
-            <p> </p>
-            <a href="https://drive.google.com/drive/folders/11YmA5xGudxZFzNzrpdl950n4I7_fUYEf" target="_blank">課程連結</a>
+            <!-- <p>這裡顯示一些補充資料。</p> -->
+            <h3><a href="https://drive.google.com/drive/folders/11YmA5xGudxZFzNzrpdl950n4I7_fUYEf" target="_blank" id="addData">課程連結</a></h3>
+            <p></p>
         </div>
+        <button id="toggleButton">補充資料區</button>
     </div>
     <script src="scripts.js"></script>
 </body>
