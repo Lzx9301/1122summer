@@ -35,6 +35,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
             <p>帳號：${student.account}</p>
             <p>密碼：${student.password}</p>
         `;
+        
     } else {
         studentInfo.innerHTML = '<p>找不到該學生資料。</p>';
     }
@@ -58,10 +59,12 @@ function addData(){
     $("#search").hide()
     $("#searchName").hide()
     $("#searchButton").hide()
+    $("#studentInfo").hide()
 }
 
 function Pid(){
     $("h2").show()
     $("#searchName").show()
     $("#searchButton").show()
+    $("#studentInfo").show()
 }
