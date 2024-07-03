@@ -45,9 +45,23 @@ document.getElementById('toggleButton').addEventListener('click', function() {
     if (extraInfo.style.display === 'none') {
         extraInfo.style.display = 'block';
         this.textContent = '補充資料區';
+        addData();
+        
     } else {
         extraInfo.style.display = 'none';
         this.textContent = '補充資料區';
+        Pid();
     }
 });
 
+function addData(){
+    $("#search").hide()
+    $("#searchName").hide()
+    $("#searchButton").hide()
+}
+
+function Pid(){
+    $("h2").show()
+    $("#searchName").show()
+    $("#searchButton").show()
+}
