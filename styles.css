@@ -67,3 +67,20 @@ top: 420px; */
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+#bytefox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px; /* 調整大小 */
+}
+
+@keyframes moveFox {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+#bytefox {
+    animation: moveFox 2s infinite ease-in-out;
+}
