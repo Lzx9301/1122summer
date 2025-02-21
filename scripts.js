@@ -61,7 +61,12 @@ function Pid(){
     $("#searchButton").show()
     $("#studentInfo").show()
 }
-
 document.getElementById("bytefox").addEventListener("click", function() {
-    alert("比特狐：嗨，我來幫你學習程式！");
+    let fox = this;
+    fox.style.animation = "jump 0.6s ease-in-out";
+    setTimeout(() => {
+        fox.style.animation = "float 3s infinite alternate ease-in-out";
+        window.open("https://your-link.com", "_blank");
+    }, 600);
 });
+
