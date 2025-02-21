@@ -66,7 +66,7 @@ document.getElementById("bytefox").addEventListener("click", function() {
     fox.style.animation = "jump 0.6s ease-in-out";
     setTimeout(() => {
         fox.style.animation = "float 3s infinite alternate ease-in-out";
-        window.open("https://your-link.com", "_blank");
+        window.open("https://youtube.com/@bytefox-codingstudio?si=nYotvCYkZNzX_KAL", "_blank");
     }, 600);
 });
 
