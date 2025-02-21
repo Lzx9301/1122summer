@@ -76,8 +76,8 @@ body {
 #bytefox {
     position: fixed;
     bottom: 20px;
-    right: 50px;
-    width: 100px;
+    right: 30px;
+    width: 150px;
     cursor: pointer;
     animation: float 3s infinite alternate ease-in-out;
 }
