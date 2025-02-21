@@ -64,10 +64,14 @@ function Pid(){
 
 document.getElementById("bytefox").addEventListener("click", function() {
     let fox = this;
-    fox.style.animation = "jump 3s ease-in-out";
+    fox.style.animation = "jump 1.5s ease-in-out";
     setTimeout(() => {
-        fox.style.animation = "float 3s infinite alternate ease-in-out";
-        window.open("https://youtube.com/@bytefox-codingstudio?si=nYotvCYkZNzX_KAL", "_blank");
-    }, 3000);
+        fox.style.animation = "none"; // 先清除動畫，確保重新觸發
+        void fox.offsetWidth; // 強制重繪
+        fox.style.animation = "jump 1.5s ease-in-out";
+        setTimeout(() => {
+            fox.style.animation = "float 3s infinite alternate ease-in-out";
+            window.open("https://www.youtube.com/@ByteFox-CodingStudio", "_blank");
+        }, 1500);
+    }, 1500);
 });
-
