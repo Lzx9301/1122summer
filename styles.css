@@ -68,19 +68,27 @@ top: 420px; */
     transform: translate(-50%, -50%);
 }
 
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
 #bytefox {
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    width: 150px; /* 調整大小 */
+    right: 50px;
+    width: 100px;
+    cursor: pointer;
+    animation: float 3s infinite alternate ease-in-out;
 }
 
-@keyframes moveFox {
+@keyframes float {
     0% { transform: translateX(0); }
-    50% { transform: translateX(10px); }
-    100% { transform: translateX(0); }
+    100% { transform: translateX(-30px); }
 }
 
-#bytefox {
-    animation: moveFox 2s infinite ease-in-out;
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-50px); }
 }
+
