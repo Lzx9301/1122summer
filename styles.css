@@ -92,3 +92,6 @@ body {
     50% { transform: translateY(-50px); }
 }
 
+#line{
+    width: 100px;
+}
