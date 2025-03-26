@@ -2,7 +2,7 @@ const students = [
     { name: '01', account: 'infostudent01', password: 'Zaz12762' },
     { name: '02', account: 'infostudent02', password: 'Cov37430' },
     { name: '03', account: 'infostudent03', password: 'Yux85462' },
-    { name: '04', account: 'infostudent04', password: 'Nux55035' },
+    { name: '04', account: 'infostudent04', password: 'Nux55038' },
     { name: '05', account: 'infostudent05', password: 'Fub28527' },
     { name: '06', account: 'infostudent01', password: 'Zaz12762' },
     { name: '07', account: 'infostudent02', password: 'Cov37430' },
