@@ -1,8 +1,16 @@
-// scripts.js — ES Module
+// ---------- 工具：把姓名轉成安全路徑 ----------
+function sanitizeName(name) {
+  return (name || "")
+    .trim()
+    .replace(/[^\p{L}\p{N}\-_ ]/gu, "") // 移除奇怪符號（含全形）
+    .replace(/\s+/g, "_");              // 空白 -> 底線
+}
+
+// ---------- Firebase ESM ----------
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 import { getStorage, ref, uploadBytes, getDownloadURL, listAll, getMetadata } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-storage.js";
 
-// 🔹 初始化 Firebase
+// 初始化
 const firebaseConfig = {
   apiKey: "AIzaSyAdS--elaCvzQOAPhMDPByLoTRXGibC9Rc",
   authDomain: "octo-7c190.firebaseapp.com",
@@ -14,7 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-// 🔹 建立上傳區塊
+// ---------- 建立上傳區 ----------
 const mount = document.getElementById("uploadSection");
 if (mount) {
   mount.innerHTML = `
@@ -30,14 +38,16 @@ if (mount) {
   if (uploadBtn) uploadBtn.addEventListener("click", uploadFile);
 }
 
-// 🔹 上傳檔案
+// ---------- 上傳檔案 ----------
 async function uploadFile() {
-  const nameInput = document.getElementById("searchName");
-  const studentName = (nameInput?.value || "").trim();
+  const nameInput = document.getElementById("searchName"); // ★ 加回這行
+  const rawName = (nameInput?.value || "");
+  const studentName = sanitizeName(rawName);
+
   const file = document.getElementById("fileInput")?.files[0];
   const msg = document.getElementById("uploadMsg");
-
   if (!msg) return;
+
   if (!studentName) { msg.textContent = "請輸入學生姓名"; return; }
   if (!file) { msg.textContent = "請選擇要上傳的檔案"; return; }
 
@@ -50,7 +60,7 @@ async function uploadFile() {
     const url = await getDownloadURL(storageRef);
     msg.innerHTML = `上傳成功！<br><a href="${url}" target="_blank">開啟檔案</a>`;
 
-    // 自動刷新紀錄
+    // 上傳後自動刷新該生的上傳紀錄
     const box = document.getElementById('history');
     if (box) {
       const list = await listUploadsFor(studentName);
@@ -62,23 +72,26 @@ async function uploadFile() {
   }
 }
 
-// 🔹 查詢上傳紀錄
-async function listUploadsFor(studentName) {
+// ---------- 查詢上傳紀錄 ----------
+async function listUploadsFor(studentNameRaw) {
+  const studentName = sanitizeName(studentNameRaw);
   const dirRef = ref(storage, `uploads/${studentName}`);
   const result = await listAll(dirRef);
   const items = await Promise.all(result.items.map(async (itemRef) => {
-    const [url, meta] = await Promise.all([ getDownloadURL(itemRef), getMetadata(itemRef) ]);
+    const [url, meta] = await Promise.all([getDownloadURL(itemRef), getMetadata(itemRef)]);
     return { name: itemRef.name, url, updated: meta.updated, size: meta.size };
   }));
   items.sort((a,b) => new Date(b.updated) - new Date(a.updated));
   return items;
 }
+
 function prettyBytes(bytes) {
   if (!bytes) return '0 B';
   const units = ['B','KB','MB','GB','TB'];
   const i = Math.floor(Math.log(bytes)/Math.log(1024));
   return (bytes/Math.pow(1024,i)).toFixed(1) + ' ' + units[i];
 }
+
 function renderHistory(list) {
   const box = document.getElementById('history');
   if (!box) return;
@@ -93,6 +106,7 @@ function renderHistory(list) {
     </div>
   `).join('');
 }
+
 document.getElementById('searchButton')?.addEventListener('click', async () => {
   const name = (document.getElementById('searchName')?.value || '').trim();
   const box = document.getElementById('history');
@@ -108,7 +122,7 @@ document.getElementById('searchButton')?.addEventListener('click', async () => {
   }
 });
 
-// 🔹 比特狐動畫
+// ---------- 比特狐動畫 ----------
 document.getElementById("bytefox")?.addEventListener("click", function() {
   let fox = this;
   fox.style.animation = "jump 1.5s ease-in-out";
