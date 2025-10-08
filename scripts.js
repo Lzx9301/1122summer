@@ -15,7 +15,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAdS--elaCvzQOAPhMDPByLoTRXGibC9Rc",
   authDomain: "octo-7c190.firebaseapp.com",
   projectId: "octo-7c190",
-  storageBucket: "octo-7c190.appspot.com",
+  storageBucket: "octo-7c190.firebasestorage.app",
   messagingSenderId: "351002657731",
   appId: "1:351002657731:web:9db320ed4723e74a2a7376",
 };
@@ -135,3 +135,4 @@ document.getElementById("bytefox")?.addEventListener("click", function() {
     }, 1500);
   }, 1500);
 });
+
